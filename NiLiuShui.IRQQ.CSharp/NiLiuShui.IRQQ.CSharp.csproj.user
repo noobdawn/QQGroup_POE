@@ -3,6 +3,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <StartProgram>C:\CleverQQAir\CleverQQ Air.exe</StartProgram>
+    <StartProgram>C:\Users\Administrator\Desktop\IRQQ1.4.7（密码1）\IRQQ.exe</StartProgram>
   </PropertyGroup>
 </Project>

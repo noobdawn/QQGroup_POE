@@ -129,7 +129,7 @@ namespace NiLiuShui.IRQQ.CSharp
             if (person.ChaosCount < 0)
                 person.ChaosCount = 0;
 
-            IRQQApi.Api_OutPutLog(string.Format("混沌石变化 QQ:{0}", qq));
+            //IRQQApi.Api_OutPutLog(string.Format("混沌石变化 QQ:{0}", qq));
         }
 
         public static void NickNameChange(string group_qq, string qq, string newName, bool check = true)

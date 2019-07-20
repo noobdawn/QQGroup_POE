@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace NiLiuShui.IRQQ.CSharp
 {
-    class Arena
+    /// <summary>
+    /// 战斗相关的类
+    /// </summary>
+    class Arena : IModule
     {
+        public void WhenParamIn(SendParam param)
+        {
+            
+        }
     }
 }

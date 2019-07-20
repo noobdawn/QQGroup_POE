@@ -6,10 +6,78 @@ E:\LiuShuiIRQQCSharp\NiLiuShui.IRQQ\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR
 E:\LiuShuiIRQQCSharp\NiLiuShui.IRQQ\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
 C:\Users\Administrator\Desktop\IRQQ1.4.7（密码1）\plugin\NiLiuShui.IR.dll
 C:\Users\Administrator\Desktop\IRQQ1.4.7（密码1）\plugin\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3 (1)\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csprojAssemblyReference.cache
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Downloads\sdk\IR__C#SDK_S3\IRQQPluginC#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\IR__C#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\IR__C#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\IR__C#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\IR__C#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\IR__C#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\IR__C#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\IR__C#SDK_S3\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190513\C#开发SDK模版20190513\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121215\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\1612121214\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121214\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\Tencent Files\1612121214\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Documents\Tencent Files\1612121214\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121214\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Tencent Files\1612121214\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\Tencent Files\1612121214\FileRecv\C#开发SDK模版20190515\C#开发SDK模版20190515\C#开发SDK模版20190515\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\bin\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
 C:\CleverQQAir\plugin\NiLiuShui.IR.dll
 C:\CleverQQAir\plugin\NiLiuShui.IR.pdb
-D:\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
-D:\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
-D:\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
-D:\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
-D:\IRQQPluginC#SDK_S3\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb

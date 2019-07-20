@@ -15,19 +15,22 @@ namespace NiLiuShui.IRQQ.CSharp
         public FormMain()
         {
             InitializeComponent();
+            instance = this;
+        }
+
+        private static FormMain instance;
+        /// <summary>
+        /// 单例模式
+        /// </summary>
+        /// <returns></returns>
+        public static FormMain getInstance()
+        {
+            return instance;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                IRQQApi.Api_SetRInf("1164185642", 3, "");
-                MessageBox.Show("请求了");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
     }
 }

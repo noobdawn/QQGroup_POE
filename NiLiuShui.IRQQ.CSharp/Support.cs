@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,34 +25,39 @@ namespace NiLiuShui.IRQQ.CSharp
             return person.NickName;
         }
 
-        public static void Response(string groupqq, string qq, ChineseID id, params object[] objs)
+        public static void Response(string groupqq, string qq, string id, params object[] objs)
         {
             string content = string.Format(GetText(id),objs);
             IRQQApi.Api_SendMsg(RobotQQ, 2, groupqq, qq, content, -1);
         }
-        public static string GetText(ChineseID id)
+
+        #region Localization
+        public static Dictionary<string, string> localization;
+        public static void InitLocalization()
         {
-            return ChineseText[(int)id];
+            string path = CachePath + "\\Localization.txt";
+            localization = new Dictionary<string, string>();
+            if (!File.Exists(path)) return;
+            string[] lines = File.ReadAllLines(path);
+            foreach (var line in lines)
+            {
+                var kv = line.Split(new string[]{ "|-zxc-|" }, StringSplitOptions.RemoveEmptyEntries);
+                localization.Add(kv[0].Trim(), kv[1].Trim());
+            }
+            foreach (var kv in localization)
+            {
+
+                IRQQApi.Api_OutPutLog(kv.Key + " " + kv.Value);
+            }
+            IRQQApi.Api_OutPutLog("加载文本" + lines.Length.ToString() + "条");
         }
 
-        public static string[] ChineseText = new string[]
+        public static string GetText(string id)
         {
-            "#仓库",
-            "#查询",
-            "[IR:at={0}]({0})拥有混沌石：{1}",
-            "[IR:at={0}]({0})打到了一件不错的装备，卖出了{1}个混沌石的高价",
-            "[IR:at={0}]({0})掉落了一个野生的崇高，获得了{1}个混沌石",
-            "[IR:at={0}]({0})凑齐了所有疯医卡得到了猎首，获得了{1}个混沌石",
-        };
-    }
-
-    enum ChineseID
-    {
-        Command_to_Query,
-        Command_to_Query_Other,
-        Response_to_Query,
-        GoodLuck_0,
-        GoodLuck_1,
-        GoodLuck_2,
+            if (localization.ContainsKey(id))
+                return localization[id];
+            return "";
+        }
+        #endregion
     }
 }
