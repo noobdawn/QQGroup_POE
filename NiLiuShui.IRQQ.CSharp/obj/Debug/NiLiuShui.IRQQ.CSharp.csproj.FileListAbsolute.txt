@@ -74,10 +74,12 @@ C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\o
 C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
 C:\Users\Administrator\Desktop\C#开发SDK模版20190524\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
-C:\CleverQQAir\plugin\NiLiuShui.IR.dll
-C:\CleverQQAir\plugin\NiLiuShui.IR.pdb
 C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
 C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
 C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
 C:\Users\Administrator\Desktop\新建文件夹\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\CleverQQAir\NiLiuShui.IR.dll
+C:\CleverQQAir\NiLiuShui.IR.pdb
+C:\CleverQQAir\plugin\NiLiuShui.IR.dll
+C:\CleverQQAir\plugin\NiLiuShui.IR.pdb

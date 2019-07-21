@@ -32,13 +32,13 @@ namespace NiLiuShui.IRQQ.CSharp
                 DataRunTime.ChaosChange(param.GroupQQ, param.QQ, rdCoin);
                 Support.Response(param.GroupQQ, param.QQ, "GoodLuck_2", data.QQ, rdCoin);
             }
-            else if (rand <= 25)
+            else if (rand <= 50)
             {
                 rdCoin = random.Next(50, 150);
                 DataRunTime.ChaosChange(param.GroupQQ, param.QQ, 1);
                 Support.Response(param.GroupQQ, param.QQ, "GoodLuck_1", data.QQ, rdCoin);
             }
-            else if (rand <= 100)
+            else if (rand <= 300)
             {
                 rdCoin = random.Next(20, 50);
                 DataRunTime.ChaosChange(param.GroupQQ, param.QQ, 1);

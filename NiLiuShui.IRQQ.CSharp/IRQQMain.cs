@@ -59,6 +59,7 @@ namespace NiLiuShui.IRQQ.CSharp
         [DllExport(ExportName = nameof(IR_Create), CallingConvention = CallingConvention.StdCall)]
         public static string IR_Create()
         {
+            LitJson.JsonData j = new LitJson.JsonData();
             string szBuffer = "插件名称{" + pluginName + "}\n插件版本{" + pluginVersion + "}\n插件作者{" + pluginAuthor + "}\n插件说明{" + pluginDescribe + "}\n插件skey{" + pluginSkey + "}插件sdk{" + pluginSdk + "}";
             Timeslice.Open();
             DataRunTime.Load();

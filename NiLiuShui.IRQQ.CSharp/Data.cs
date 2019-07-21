@@ -13,13 +13,13 @@ namespace NiLiuShui.IRQQ.CSharp
     class PersonData
     {
         //群QQ
-        public string GroupQQ;
+        public string GroupQQ { get; set; }
         //QQ
-        public string QQ;
+        public string QQ { get; set; }
         //昵称
-        public string NickName;
+        public string NickName { get; set; }
         //货币数量
-        public double ChaosCount;
+        public double ChaosCount { get; set; }
         public PersonData()
         {
             GroupQQ = "0";
@@ -34,7 +34,7 @@ namespace NiLiuShui.IRQQ.CSharp
     /// </summary>
     class DataSet
     {
-        public PersonData[] persons;
+        public PersonData[] persons { get; set; }
     }
 
     /// <summary>
@@ -181,7 +181,6 @@ namespace NiLiuShui.IRQQ.CSharp
             }
             time = 0;
             IsInited = true;
-            Timeslice.AddSecondEvent(AutoSave);
         }
         #endregion
 
@@ -196,6 +195,7 @@ namespace NiLiuShui.IRQQ.CSharp
         {
             _IO io = new _IO();
             FromSet(io.Load());
+            Timeslice.AddSecondEvent(AutoSave);
         }
         #endregion
 
