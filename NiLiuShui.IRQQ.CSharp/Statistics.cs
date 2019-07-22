@@ -10,7 +10,7 @@ namespace NiLiuShui.IRQQ.CSharp
         public bool WhenParamIn(SendParam param)
         {
             //命令
-            if (param.param[0] == Support.GetText("Command_to_Statistics"))
+            if (param.param[0] == Support.GetText("Command_to_Statistics") && param.param.Length == 1)
             {
                 StringBuilder builder = new StringBuilder();
                 builder.AppendLine(Support.GetText("Response_to_Statistics"));

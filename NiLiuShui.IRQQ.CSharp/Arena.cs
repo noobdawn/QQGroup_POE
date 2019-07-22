@@ -32,7 +32,7 @@ namespace NiLiuShui.IRQQ.CSharp
                 if (!long.TryParse(otherqq, out t)) return true;
                 PersonData other = DataRunTime.GetPerson_Add(param.GroupQQ, otherqq);
                 int cost = 20;
-                if (data.ChaosCount < 20)
+                if (data.ChaosCount < cost)
                     return true;
                 DataRunTime.ChaosChange(data.GroupQQ, data.QQ, -cost);
                 if (data.QQ == other.QQ)
@@ -44,6 +44,29 @@ namespace NiLiuShui.IRQQ.CSharp
                 double realLost = DataRunTime.ChaosChange(other.GroupQQ, other.QQ, -p);
                 DataRunTime.ChaosChange(data.GroupQQ, data.QQ, -realLost);
                 Support.Response(param.GroupQQ, param.QQ, "Response_to_ChaosStrike", data.QQ, other.QQ, cost, -realLost);
+            }
+            if (param.param[0] == Support.GetText("Command_to_Syndicate") && param.param.Length == 1)
+            {
+                int cost = 100;
+                if (data.ChaosCount < cost)
+                    return true;
+                DataRunTime.ChaosChange(data.GroupQQ, data.QQ, -cost);
+                Support.Response(param.GroupQQ, param.QQ, "Response_to_Syndicate", data.QQ, cost);
+                var result = DataRunTime.GetTop(param.GroupQQ);
+                int allLost = 150;
+                int[] losts = new int[Math.Min(3, result.Count)];
+                for (int i = 0; i < losts.Length - 1; i++)
+                {
+                    losts[i] = random.Next(0, allLost);
+                    allLost -= losts[i];
+                }
+                losts[losts.Length - 1] = allLost;
+                for (int i = 0; i < losts.Length; i++)
+                {
+                    PersonData p = result[i];
+                    DataRunTime.ChaosChange(p.GroupQQ, p.QQ, -losts[i]);
+                    Support.Response(param.GroupQQ, param.QQ, "Response_to_Syndicate_Lost", p.QQ, losts[i]);
+                }
             }
             return true;
         }
