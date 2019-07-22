@@ -66,7 +66,6 @@ namespace NiLiuShui.IRQQ.CSharp
             Support.InitLocalization();
             modules = new IModule[]
             {
-                new Repeat(),
                 new Statistics(),
                 new Arena(),
                 new Bank(),

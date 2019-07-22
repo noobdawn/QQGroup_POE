@@ -7,6 +7,16 @@ using System.Timers;
 
 namespace NiLiuShui.IRQQ.CSharp
 {
+    enum EnumProperty
+    {
+        HealSelf, 
+        DamageAddon,
+        CriticalChance,
+        CriticalAddon,
+        Shield,
+        Max,
+    }
+
     /// <summary>
     /// 群内成员的数据类
     /// </summary>
@@ -20,12 +30,15 @@ namespace NiLiuShui.IRQQ.CSharp
         public string NickName { get; set; }
         //货币数量
         public double ChaosCount { get; set; }
+        //
+        public double[] Properties { get; set; }
         public PersonData()
         {
             GroupQQ = "0";
             QQ = "0";
             NickName = "default";
             ChaosCount = 0;
+            Properties = new double[(int)EnumProperty.Max];
         }
     }
 
@@ -44,8 +57,17 @@ namespace NiLiuShui.IRQQ.CSharp
     {
         public static bool IsInited = false;
         public static Dictionary<string, Dictionary<string, PersonData>> persons = new Dictionary<string, Dictionary<string, PersonData>>();
+        public static List<PersonData> ranked = new List<PersonData>();
 
         #region 增删查改
+        private static void Sort()
+        {
+            ranked.Sort((x, y) =>
+            {
+                return x.ChaosCount.CompareTo(y.ChaosCount);
+            });
+        }
+
         public static PersonData AddNewPerson(string group_qq, string qq, bool check = true)
         {
             if (check && !IsInited) return null;
@@ -70,9 +92,9 @@ namespace NiLiuShui.IRQQ.CSharp
             if (!persons_in_group.ContainsKey(person.QQ))
             {
                 persons_in_group.Add(person.QQ, person);
+                ranked.Add(person);
+                Sort();
             }
-
-            IRQQApi.Api_OutPutLog(string.Format("新增成员{0}, QQ:{1}", person.NickName, person.QQ));
         }
 
         public static void RemovePerson(string group_qq, string qq, bool check = true)
@@ -85,12 +107,12 @@ namespace NiLiuShui.IRQQ.CSharp
                 if (persons_in_group.ContainsKey(qq))
                 {
                     persons.Remove(qq);
+                    ranked.Remove(GetPerson(group_qq, qq));
                     if (persons_in_group.Count == 0)
                         persons.Remove(group_qq);
+                    Sort();
                 }
             }
-
-            IRQQApi.Api_OutPutLog(string.Format("移除成员QQ:{0}", qq));
         }
 
         public static PersonData GetPerson(string group_qq, string qq, bool check = true) 
@@ -140,14 +162,15 @@ namespace NiLiuShui.IRQQ.CSharp
             {
                 var realCost = -person.ChaosCount;
                 person.ChaosCount = 0;
+                Sort();
                 return realCost;
             }
             else
             {
                 person.ChaosCount += delta;
+                Sort();
                 return delta;
             }
-            //IRQQApi.Api_OutPutLog(string.Format("混沌石变化 QQ:{0}", qq));
         }
 
         public static void NickNameChange(string group_qq, string qq, string newName, bool check = true)
@@ -171,30 +194,22 @@ namespace NiLiuShui.IRQQ.CSharp
             return person;
         }
 
-        public static List<PersonData> GetTop(string group_qq, bool check = true)
-        {
-            if (check && !IsInited) return null;
-            Dictionary<string, PersonData> persons_in_group;
-            if (!persons.TryGetValue(group_qq, out persons_in_group)) return null;
-            var array = persons_in_group.Values.ToList();
-            array.Sort((x, y) =>
-            {
-                return y.ChaosCount.CompareTo(x.ChaosCount);
-            });
-            return array;
-        }
-
         public static List<PersonData> GetBtm(string group_qq, bool check = true)
         {
             if (check && !IsInited) return null;
             Dictionary<string, PersonData> persons_in_group;
             if (!persons.TryGetValue(group_qq, out persons_in_group)) return null;
-            var array = persons_in_group.Values.ToList();
-            array.Sort((x, y) =>
-            {
-                return x.ChaosCount.CompareTo(y.ChaosCount);
-            });
-            return array;
+            return ranked.Where(x => { return group_qq == x.GroupQQ; }).ToList();
+        }
+
+        public static List<PersonData> GetTop(string group_qq, bool check = true)
+        {
+            if (check && !IsInited) return null;
+            Dictionary<string, PersonData> persons_in_group;
+            if (!persons.TryGetValue(group_qq, out persons_in_group)) return null;
+            var result = ranked.Where(x => { return group_qq == x.GroupQQ; }).ToList();
+            result.Reverse();
+            return result;
         }
 
         public static void GMChaos(string group_qq, int count, bool check = true)

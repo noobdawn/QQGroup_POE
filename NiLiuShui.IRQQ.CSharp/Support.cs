@@ -19,21 +19,27 @@ namespace NiLiuShui.IRQQ.CSharp
 
         public static string CachePath = @"C:\CleverQQAir";
 
+        #region 信息处理
         public static string GetName(PersonData person)
         {
             if (person.NickName != "default")
                 return IRQQApi.Api_GetGroupCard(RobotQQ, person.GroupQQ, person.QQ);
             return person.NickName;
         }
+        #endregion
+
+        #region 返回
         public static void Response(string groupqq, string qq, string text)
         {
             IRQQApi.Api_SendMsg(RobotQQ, 2, groupqq, qq, text, -1);
         }
+
         public static void Response(string groupqq, string qq, string id, params object[] objs)
         {
             string content = string.Format(GetText(id),objs);
             IRQQApi.Api_SendMsg(RobotQQ, 2, groupqq, qq, content, -1);
         }
+        #endregion
 
         #region Localization
         public static Dictionary<string, string> localization;
@@ -66,6 +72,24 @@ namespace NiLiuShui.IRQQ.CSharp
         public static string GetText(string id, params object[] objs)
         {
             return string.Format(GetText(id), objs);
+        }
+        #endregion
+
+        #region Skill
+        public static bool Cost(PersonData caster, double cost)
+        {
+            if (caster.ChaosCount < cost)
+                return false;
+            DataRunTime.ChaosChange(caster.GroupQQ, caster.QQ, -cost);
+            return true;
+        }
+
+        public static double Damage(PersonData caster, PersonData target, double dmg, bool allowHealCaster, bool hurtSelf = false)
+        {
+            if (caster.GroupQQ != target.GroupQQ) return 0;
+            if (!hurtSelf && caster.QQ == target.QQ) return 0;
+            double realLost = DataRunTime.ChaosChange(target.GroupQQ, target.QQ, -dmg);
+            return realLost;
         }
         #endregion
     }
