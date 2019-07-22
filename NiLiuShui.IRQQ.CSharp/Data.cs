@@ -117,18 +117,36 @@ namespace NiLiuShui.IRQQ.CSharp
             return true;
         }
 
-        public static void ChaosChange(string group_qq, string qq, double delta, bool check = true)
+        public static bool ChaoEnough(string group_qq, string qq, double delta, bool check = true)
         {
-            if (check && !IsInited) return;
+            if (check && !IsInited) return false;
             var person = GetPerson(group_qq, qq);
             if (person == null)
                 person = AddNewPerson(group_qq, qq);
             if (person == null)
-                return;
-            person.ChaosCount += delta;
-            if (person.ChaosCount < 0)
-                person.ChaosCount = 0;
+                return false;
+            return person.ChaosCount >= delta;
+        }
 
+        public static double ChaosChange(string group_qq, string qq, double delta, bool check = true)
+        {
+            if (check && !IsInited) return 0;
+            var person = GetPerson(group_qq, qq);
+            if (person == null)
+                person = AddNewPerson(group_qq, qq);
+            if (person == null)
+                return 0;
+            if (person.ChaosCount + delta < 0)
+            {
+                var realCost = -person.ChaosCount;
+                person.ChaosCount = 0;
+                return realCost;
+            }
+            else
+            {
+                person.ChaosCount += delta;
+                return delta;
+            }
             //IRQQApi.Api_OutPutLog(string.Format("混沌石变化 QQ:{0}", qq));
         }
 
@@ -146,10 +164,48 @@ namespace NiLiuShui.IRQQ.CSharp
 
         public static PersonData GetPerson_Add(string group_qq, string qq, bool check = true)
         {
+            if (check && !IsInited) return null;
             var person = GetPerson(group_qq, qq);
             if (person == null)
                 person = AddNewPerson(group_qq, qq);
             return person;
+        }
+
+        public static List<PersonData> GetTop(string group_qq, bool check = true)
+        {
+            if (check && !IsInited) return null;
+            Dictionary<string, PersonData> persons_in_group;
+            if (!persons.TryGetValue(group_qq, out persons_in_group)) return null;
+            var array = persons_in_group.Values.ToList();
+            array.Sort((x, y) =>
+            {
+                return y.ChaosCount.CompareTo(x.ChaosCount);
+            });
+            return array;
+        }
+
+        public static List<PersonData> GetBtm(string group_qq, bool check = true)
+        {
+            if (check && !IsInited) return null;
+            Dictionary<string, PersonData> persons_in_group;
+            if (!persons.TryGetValue(group_qq, out persons_in_group)) return null;
+            var array = persons_in_group.Values.ToList();
+            array.Sort((x, y) =>
+            {
+                return x.ChaosCount.CompareTo(y.ChaosCount);
+            });
+            return array;
+        }
+
+        public static void GMChaos(string group_qq, int count, bool check = true)
+        {
+            if (check && !IsInited) return;
+            Dictionary<string, PersonData> persons_in_group;
+            if (!persons.TryGetValue(group_qq, out persons_in_group)) return;
+            foreach (var kv in persons_in_group)
+            {
+                kv.Value.ChaosCount += count;
+            }
         }
         #endregion
 

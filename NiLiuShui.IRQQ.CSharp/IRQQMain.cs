@@ -11,7 +11,7 @@ namespace NiLiuShui.IRQQ.CSharp
 {
     interface IModule
     {
-        void WhenParamIn(SendParam param);
+        bool WhenParamIn(SendParam param);
     }
 
     /// <summary>
@@ -66,8 +66,10 @@ namespace NiLiuShui.IRQQ.CSharp
             Support.InitLocalization();
             modules = new IModule[]
             {
-                new Bank(),
+                new Repeat(),
+                new Statistics(),
                 new Arena(),
+                new Bank(),
             };
             return szBuffer;
         }
@@ -131,10 +133,10 @@ namespace NiLiuShui.IRQQ.CSharp
                     return 1;
                 foreach (var module in modules)
                 {
-                    module.WhenParamIn(send);
+                    if (!module.WhenParamIn(send))
+                        break;
                 }
             }
-
             return 1;
         }
 

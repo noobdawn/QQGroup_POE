@@ -9,6 +9,7 @@ namespace NiLiuShui.IRQQ.CSharp
 {
     static class Support
     {
+        public static string God = "694109410";
         public static string RobotQQ = "2590863519";
         private static string[] QQ_Group = new string[] { "979136170", "96955256" };
         public static bool isGroupCorrect(string groupID)
@@ -24,7 +25,10 @@ namespace NiLiuShui.IRQQ.CSharp
                 return IRQQApi.Api_GetGroupCard(RobotQQ, person.GroupQQ, person.QQ);
             return person.NickName;
         }
-
+        public static void Response(string groupqq, string qq, string text)
+        {
+            IRQQApi.Api_SendMsg(RobotQQ, 2, groupqq, qq, text, -1);
+        }
         public static void Response(string groupqq, string qq, string id, params object[] objs)
         {
             string content = string.Format(GetText(id),objs);
@@ -57,6 +61,11 @@ namespace NiLiuShui.IRQQ.CSharp
             if (localization.ContainsKey(id))
                 return localization[id];
             return "";
+        }
+
+        public static string GetText(string id, params object[] objs)
+        {
+            return string.Format(GetText(id), objs);
         }
         #endregion
     }

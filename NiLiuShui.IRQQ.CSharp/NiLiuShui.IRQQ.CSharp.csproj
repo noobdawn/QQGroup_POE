@@ -26,7 +26,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\CleverQQAir\plugin\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\CleverQQAir\plugin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -78,6 +78,8 @@
     <Compile Include="IRQQMain.cs" />
     <Compile Include="IRQQUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repeat.cs" />
+    <Compile Include="Statistics.cs" />
     <Compile Include="Support.cs" />
     <Compile Include="timeslice.cs" />
   </ItemGroup>

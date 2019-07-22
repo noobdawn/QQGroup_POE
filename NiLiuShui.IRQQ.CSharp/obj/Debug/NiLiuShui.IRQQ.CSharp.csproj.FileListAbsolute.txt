@@ -83,3 +83,10 @@ C:\CleverQQAir\NiLiuShui.IR.dll
 C:\CleverQQAir\NiLiuShui.IR.pdb
 C:\CleverQQAir\plugin\NiLiuShui.IR.dll
 C:\CleverQQAir\plugin\NiLiuShui.IR.pdb
+C:\Users\CleverQQAir\plugin\NiLiuShui.IR.dll
+C:\Users\CleverQQAir\plugin\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.FormMain.resources
+C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
+C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
