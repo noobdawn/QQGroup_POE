@@ -26,25 +26,26 @@ namespace NiLiuShui.IRQQ.CSharp
         private void StockStep(object sender, ElapsedEventArgs e)
         {
             time++;
-            if (time >= 60)
+            if (time >= 180)
             {
                 int next = _S.RandomInt(curPrice / 10 * 9 - 20, curPrice / 10 * 11 + 1 + 20);
                 if (next > MaxPrice)
                     next = _S.RandomInt(curPrice / 10 * 9 - 20, MaxPrice);
                 if (next < MinPrice)
                     next = _S.RandomInt(MinPrice, curPrice / 10 * 11 + 1 + 20);
-                curPrice = next;
-                time -= 60;
+                curPrice = next;                
+                _S.Broadcast("Response_to_QueryStock", curPrice);
+                time -= 180;
             }
         }
 
         public bool WhenParamIn(SendParam param)
         {
-            if (param.param[0] == _S.GetText("Command_to_QueryStock") && param.param.Length == 1)
-            {
-                _S.Response(param.GroupQQ, param.QQ, "Response_to_QueryStock", curPrice);
-                return false;
-            }
+            //if (param.param[0] == _S.GetText("Command_to_QueryStock") && param.param.Length == 1)
+            //{
+            //    _S.Response(param.GroupQQ, param.QQ, "Response_to_QueryStock", curPrice);
+            //    return false;
+            //}
             int opCnt;
             int realCost;
             if (param.param[0] == _S.GetText("Command_to_Buy") && param.param.Length == 2 && int.TryParse(param.param[1], out opCnt))

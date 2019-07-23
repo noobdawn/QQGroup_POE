@@ -33,11 +33,25 @@ namespace NiLiuShui.IRQQ.CSharp
         {
             IRQQApi.Api_SendMsg(Config.RobotQQ, 2, groupqq, qq, text, -1);
         }
-
+        public static void Broadcast(string text)
+        {
+            foreach (var kv in DataRunTime.persons)
+            {
+                IRQQApi.Api_SendMsg(Config.RobotQQ, 2, kv.Key, "", text, -1);
+            }
+        }
         public static void Response(string groupqq, string qq, string id, params object[] objs)
         {
             string content = string.Format(GetText(id),objs);
             IRQQApi.Api_SendMsg(Config.RobotQQ, 2, groupqq, qq, content, -1);
+        }
+        public static void Broadcast(string id, params object[] objs)
+        {
+            string content = string.Format(GetText(id), objs);
+            foreach (var kv in DataRunTime.persons)
+            {
+                IRQQApi.Api_SendMsg(Config.RobotQQ, 2, kv.Key, "", content, -1);
+            }
         }
         #endregion
 
@@ -84,12 +98,17 @@ namespace NiLiuShui.IRQQ.CSharp
             return true;
         }
 
-        public static double Damage(PersonData caster, PersonData target, double dmg, bool allowHealCaster, bool hurtSelf = false)
+        public static double[] Damage(PersonData caster, PersonData target, double dmg, bool allowHealCaster, bool hurtSelf = false)
         {
-            if (caster.GroupQQ != target.GroupQQ) return 0;
-            if (!hurtSelf && caster.QQ == target.QQ) return 0;
+            double[] result = new double[2];
+            if (caster.GroupQQ != target.GroupQQ) return result;
+            if (!hurtSelf && caster.QQ == target.QQ) return result;
             double realLost = DataRunTime.ChaosChange(target.GroupQQ, target.QQ, -dmg);
-            return realLost;
+            int recover = (int)(Math.Abs(realLost) * _S.GetPropertyValue((int)EnumProperty.HealSelf, (int)(caster.Properties[(int)EnumProperty.HealSelf])));
+            DataRunTime.ChaosChange(caster.GroupQQ, caster.QQ, recover);
+            result[0] = realLost;
+            result[1] = recover;
+            return result;
         }
         #endregion
 
@@ -150,6 +169,7 @@ namespace NiLiuShui.IRQQ.CSharp
             var table = tables[property];
             return table.Cost[grade];
         }
+        
         #endregion
     }
 }
