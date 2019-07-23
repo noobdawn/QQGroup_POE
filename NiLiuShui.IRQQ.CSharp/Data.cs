@@ -14,6 +14,7 @@ namespace NiLiuShui.IRQQ.CSharp
         CriticalChance,
         CriticalAddon,
         Shield,
+        AfkCount,
         Max,
     }
 
@@ -32,6 +33,8 @@ namespace NiLiuShui.IRQQ.CSharp
         public double ChaosCount { get; set; }
         //
         public double[] Properties { get; set; }
+        //持有崇高石数量
+        public int ExCount;
         public PersonData()
         {
             GroupQQ = "0";
@@ -39,6 +42,7 @@ namespace NiLiuShui.IRQQ.CSharp
             NickName = "default";
             ChaosCount = 0;
             Properties = new double[(int)EnumProperty.Max];
+            ExCount = 0;
         }
     }
 
@@ -72,10 +76,9 @@ namespace NiLiuShui.IRQQ.CSharp
         {
             if (check && !IsInited) return null;
             PersonData person = new PersonData();
-            person.ChaosCount = 0;
             person.GroupQQ = group_qq;
             person.QQ = qq;
-            person.NickName = IRQQApi.Api_GetGroupCard(Support.RobotQQ, group_qq, qq);
+            person.NickName = IRQQApi.Api_GetGroupCard(Config.RobotQQ, group_qq, qq);
             AddNewPerson(person);
             return person;
         }
@@ -220,6 +223,37 @@ namespace NiLiuShui.IRQQ.CSharp
             foreach (var kv in persons_in_group)
             {
                 kv.Value.ChaosCount += count;
+            }
+        }
+
+        internal static void ChaosStep(bool check = true)
+        {
+            if (check && !IsInited) return;
+            foreach (var group in persons)
+            {
+                foreach (var kv in group.Value)
+                {
+                    kv.Value.ChaosCount += 1 * (1 + _S.GetPropertyValue((int)EnumProperty.AfkCount, (int)(kv.Value.Properties[(int)EnumProperty.AfkCount])));
+                }
+            }
+        }
+
+        internal static bool ExChange(string group_qq, string qq, double delta, bool check = true)
+        {
+            if (check && !IsInited) return false;
+            var person = GetPerson(group_qq, qq);
+            if (person == null)
+                person = AddNewPerson(group_qq, qq);
+            if (person == null)
+                return false;
+            if (person.ExCount + delta < 0)
+            {
+                return false;
+            }
+            else
+            {
+                person.ExCount += (int)delta;
+                return true;
             }
         }
         #endregion

@@ -32,7 +32,7 @@ namespace NiLiuShui.IRQQ.CSharp
             if (RepeatTimes >= 5)
             {
                 DataRunTime.ChaosChange(param.GroupQQ, param.QQ, -3);
-                Support.Response(param.GroupQQ, param.QQ, "Response_to_Repeat", param.QQ, 3);
+                _S.Response(param.GroupQQ, param.QQ, "Response_to_Repeat", param.QQ, 3);
                 return false;
             }
             return true;

@@ -63,11 +63,12 @@ namespace NiLiuShui.IRQQ.CSharp
             string szBuffer = "插件名称{" + pluginName + "}\n插件版本{" + pluginVersion + "}\n插件作者{" + pluginAuthor + "}\n插件说明{" + pluginDescribe + "}\n插件skey{" + pluginSkey + "}插件sdk{" + pluginSdk + "}";
             Timeslice.Open();
             DataRunTime.Load();
-            Support.InitLocalization();
+            _S.InitLocalization();
             modules = new IModule[]
             {
                 new Statistics(),
                 new Arena(),
+                new Stock(),
                 new Bank(),
             };
             return szBuffer;

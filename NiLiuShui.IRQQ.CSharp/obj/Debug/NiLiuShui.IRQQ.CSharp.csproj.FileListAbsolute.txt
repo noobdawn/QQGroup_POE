@@ -90,3 +90,4 @@ C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\De
 C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.dll
 C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IR.pdb
+C:\Users\Administrator\Documents\GitHub\QQGroup_POE\NiLiuShui.IRQQ.CSharp\obj\Debug\NiLiuShui.IRQQ.CSharp.csprojAssemblyReference.cache

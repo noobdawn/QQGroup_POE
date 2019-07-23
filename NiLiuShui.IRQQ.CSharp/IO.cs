@@ -10,7 +10,7 @@ namespace NiLiuShui.IRQQ.CSharp
     {
         public DataSet Load()
         {
-            string path = Support.CachePath + "\\" + "Data.txt";
+            string path = Config.CachePath + "\\" + "Data.txt";
             //新档案
             if (!File.Exists(path)) return null;
             var sr = File.ReadAllText(path);
@@ -21,7 +21,7 @@ namespace NiLiuShui.IRQQ.CSharp
         public void Save(DataSet set)
         {
             if (set == null) return;
-            string path = Support.CachePath + "\\" + "Data.txt";
+            string path = Config.CachePath + "\\" + "Data.txt";
             //删除旧的数据文件
             if (File.Exists(path))
             {

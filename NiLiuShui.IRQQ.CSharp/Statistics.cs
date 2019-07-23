@@ -10,22 +10,22 @@ namespace NiLiuShui.IRQQ.CSharp
         public bool WhenParamIn(SendParam param)
         {
             //命令
-            if (param.param[0] == Support.GetText("Command_to_Statistics") && param.param.Length == 1)
+            if (param.param[0] == _S.GetText("Command_to_Statistics") && param.param.Length == 1)
             {
                 StringBuilder builder = new StringBuilder();
-                builder.AppendLine(Support.GetText("Response_to_Statistics"));
+                builder.AppendLine(_S.GetText("Response_to_Statistics"));
                 var result = DataRunTime.GetTop(param.GroupQQ);
                 for (int i = 0; i < Math.Min(3, result.Count); i++)
                 {
-                    builder.AppendLine(Support.GetText("Response_to_Query", result[i].QQ, result[i].ChaosCount));
+                    builder.AppendLine(_S.GetText("Response_to_Query", result[i].QQ, result[i].ChaosCount, result[i].ExCount));
                 }
-                builder.AppendLine(Support.GetText("Response_to_Statistics_1"));
+                builder.AppendLine(_S.GetText("Response_to_Statistics_1"));
                 result = DataRunTime.GetBtm(param.GroupQQ);
                 for (int i = 0; i < Math.Min(3, result.Count); i++)
                 {
-                    builder.AppendLine(Support.GetText("Response_to_Query", result[i].QQ, result[i].ChaosCount));
+                    builder.AppendLine(_S.GetText("Response_to_Query", result[i].QQ, result[i].ChaosCount, result[i].ExCount));
                 }
-                Support.Response(param.GroupQQ, param.QQ, builder.ToString());
+                _S.Response(param.GroupQQ, param.QQ, builder.ToString());
             }
             return true;
         }

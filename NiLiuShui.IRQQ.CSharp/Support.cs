@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace NiLiuShui.IRQQ.CSharp
 {
-    static class Support
+    static class _S
     {
-        public static string God = "694109410";
-        public static string RobotQQ = "2590863519";
-        private static string[] QQ_Group = new string[] { "979136170", "96955256" };
-        public static bool isGroupCorrect(string groupID)
+        #region 随机数
+        private static Random random;
+        public static int RandomInt(int min, int max)
         {
-            return QQ_Group.Contains(groupID);
+            if (random == null)
+                random = new Random(DateTime.Now.Millisecond);
+            return random.Next(min, max);
         }
-
-        public static string CachePath = @"C:\CleverQQAir";
+        #endregion
 
         #region 信息处理
         public static string GetName(PersonData person)
         {
             if (person.NickName != "default")
-                return IRQQApi.Api_GetGroupCard(RobotQQ, person.GroupQQ, person.QQ);
+                return IRQQApi.Api_GetGroupCard(Config.RobotQQ, person.GroupQQ, person.QQ);
             return person.NickName;
         }
         #endregion
@@ -31,13 +31,13 @@ namespace NiLiuShui.IRQQ.CSharp
         #region 返回
         public static void Response(string groupqq, string qq, string text)
         {
-            IRQQApi.Api_SendMsg(RobotQQ, 2, groupqq, qq, text, -1);
+            IRQQApi.Api_SendMsg(Config.RobotQQ, 2, groupqq, qq, text, -1);
         }
 
         public static void Response(string groupqq, string qq, string id, params object[] objs)
         {
             string content = string.Format(GetText(id),objs);
-            IRQQApi.Api_SendMsg(RobotQQ, 2, groupqq, qq, content, -1);
+            IRQQApi.Api_SendMsg(Config.RobotQQ, 2, groupqq, qq, content, -1);
         }
         #endregion
 
@@ -45,7 +45,7 @@ namespace NiLiuShui.IRQQ.CSharp
         public static Dictionary<string, string> localization;
         public static void InitLocalization()
         {
-            string path = CachePath + "\\Localization.txt";
+            string path = Config.CachePath + "\\Localization.txt";
             localization = new Dictionary<string, string>();
             if (!File.Exists(path)) return;
             string[] lines = File.ReadAllLines(path);
@@ -90,6 +90,65 @@ namespace NiLiuShui.IRQQ.CSharp
             if (!hurtSelf && caster.QQ == target.QQ) return 0;
             double realLost = DataRunTime.ChaosChange(target.GroupQQ, target.QQ, -dmg);
             return realLost;
+        }
+        #endregion
+
+        #region Property
+        class PropertyTable
+        {
+            public int[] Grade;
+            public string Templet;
+            public int[] Cost;
+            public int[] Value;
+            public int usePercent;
+        }
+        public const int MAX_PROPERTY_LEVEL = 8;
+        private static PropertyTable[] tables;
+        private static void InitTable()
+        {
+            tables = new PropertyTable[(int)EnumProperty.Max];
+            var temp = new PropertyTable();
+            temp.Templet = "+{0}%";
+            temp.Cost = new int[MAX_PROPERTY_LEVEL] { 0, 5, 20, 100, 600, 4000, 20000, 100000 };
+            temp.Value = new int[MAX_PROPERTY_LEVEL] { 0, 1, 2, 4, 8, 16, 32, 64 };
+            temp.usePercent = 100;
+            tables[(int)EnumProperty.AfkCount] = temp;
+            temp = new PropertyTable();
+            temp.Templet = "+{0}%";
+            temp.Cost = new int[MAX_PROPERTY_LEVEL] { 0, 5, 20, 100, 600, 4000, 20000, 100000 };
+            temp.Value = new int[MAX_PROPERTY_LEVEL] { 0, 5, 10, 15, 20, 25, 30, 35 };
+            temp.usePercent = 100;
+            tables[(int)EnumProperty.HealSelf] = temp;
+
+        }
+
+        public static string GetPropertyText(int property, int grade)
+        {
+            if (tables == null)
+                InitTable();
+            if (tables[property] == null)
+                return grade.ToString();
+            var table = tables[property];
+            return string.Format(table.Templet, table.Value[grade] * table.usePercent);
+        }
+        public static double GetPropertyValue(int property, int grade)
+        {
+            if (tables == null)
+                InitTable();
+            if (tables[property] == null)
+                return 0;
+            var table = tables[property];
+            return table.Value[grade];
+        }
+
+        public static int GetPropertyCost(int property, int grade)
+        {
+            if (tables == null)
+                InitTable();
+            if (tables[property] == null)
+                return 0;
+            var table = tables[property];
+            return table.Cost[grade];
         }
         #endregion
     }
