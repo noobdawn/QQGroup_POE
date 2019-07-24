@@ -57,11 +57,11 @@ namespace NiLiuShui.IRQQ.CSharp
             //命令
             if (param.param[0] == _S.GetText("Command_to_Query") && param.target == null)
             {
-                _S.Response(param.GroupQQ, param.QQ, "Response_to_Query", param.caster.QQ, param.caster.ChaosCount, param.caster.ExCount);
+                _S.Response(param.GroupQQ, param.QQ, "Response_to_Query", param.caster.NickName, param.caster.ChaosCount, param.caster.ExCount);
             }
             if (param.param[0] == _S.GetText("Command_to_Query_Other") && param.target != null)
             {
-                _S.Response(param.GroupQQ, param.QQ, "Response_to_Query", param.target.QQ, param.target.ChaosCount, param.target.ExCount);
+                _S.Response(param.GroupQQ, param.QQ, "Response_to_Query", param.target.NickName, param.target.ChaosCount, param.target.ExCount);
             }
             if (param.param[0] == _S.GetText("Command_to_GMAdd") && param.QQ == Config.God)
             {

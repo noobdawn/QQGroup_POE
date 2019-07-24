@@ -80,6 +80,7 @@
     <Compile Include="IRQQUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repeat.cs" />
+    <Compile Include="SomeAPI.cs" />
     <Compile Include="Statistics.cs" />
     <Compile Include="Stock.cs" />
     <Compile Include="Support.cs" />

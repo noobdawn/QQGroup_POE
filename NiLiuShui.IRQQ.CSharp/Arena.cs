@@ -45,13 +45,16 @@ namespace NiLiuShui.IRQQ.CSharp
             if (param.param[0] == _S.GetText("Command_to_LevelUp") && param.param.Length == 1)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < param.target.Properties.Length; i++)
+                for (int i = 0; i < param.caster.Properties.Length; i++)
                 {
-                    var grade = param.target.Properties[i];
-                    sb.Append(_S.GetText("Text_Property_" + i.ToString()));
-                    sb.Append(_S.GetPropertyText(i, (int)grade));
-                    //TODO
-                    if (i < param.target.Properties.Length - 1)
+                    var grade = (int)param.caster.Properties[i];
+                    if (_S.IsPropertyNull(i)) continue;
+                    if (grade < 0 || grade >= _S.MAX_PROPERTY_LEVEL) continue;
+                    sb.Append(_S.GetText("Text_Property_LevelUp_" + i.ToString(), 
+                        _S.GetPropertyText(i, grade),
+                        _S.GetPropertyCost(i, grade + 1),
+                        _S.GetPropertyText(i, grade + 1)));
+                    if (i < param.caster.Properties.Length - 1)
                         sb.Append("\n");
                 }
                 _S.Response(param.GroupQQ, param.QQ, sb.ToString());
@@ -60,15 +63,16 @@ namespace NiLiuShui.IRQQ.CSharp
             int pid;
             if (param.param[0] == _S.GetText("Command_to_LevelUp") && param.param.Length == 2 && int.TryParse(param.param[1], out pid))
             {
-                int cost = _S.GetPropertyCost(pid, (int)param.caster.Properties[(int)pid]);
+                if (pid < 0 && pid >= (int)EnumProperty.Max) return false;
+                if (_S.IsPropertyNull(pid)) return false;
+                if (param.target.Properties[pid] >= _S.MAX_PROPERTY_LEVEL) return false;
+                int cost = _S.GetPropertyCost(pid, (int)param.caster.Properties[pid]);
                 if (param.caster.ExCount >= cost)
                 {
                     param.caster.ExCount -= cost;
-                    param.caster.Properties[(int)pid]++;
+                    param.caster.Properties[pid]++;
+                    _S.Response(param.GroupQQ, param.QQ, "Response_to_LevelUp", "");
                 }
-                else
-                    //todo, print error
-
                 return false;
             }
 

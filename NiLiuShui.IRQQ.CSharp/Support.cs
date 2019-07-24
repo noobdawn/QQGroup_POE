@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,7 +43,7 @@ namespace NiLiuShui.IRQQ.CSharp
         }
         public static void Response(string groupqq, string qq, string id, params object[] objs)
         {
-            string content = string.Format(GetText(id),objs);
+            string content = string.Format(GetText(id), objs);
             IRQQApi.Api_SendMsg(Config.RobotQQ, 2, groupqq, qq, content, -1);
         }
         public static void Broadcast(string id, params object[] objs)
@@ -65,7 +66,7 @@ namespace NiLiuShui.IRQQ.CSharp
             string[] lines = File.ReadAllLines(path);
             foreach (var line in lines)
             {
-                var kv = line.Split(new string[]{ "|-zxc-|" }, StringSplitOptions.RemoveEmptyEntries);
+                var kv = line.Split(new string[] { "|-zxc-|" }, StringSplitOptions.RemoveEmptyEntries);
                 localization.Add(kv[0].Trim(), kv[1].Trim());
             }
             foreach (var kv in localization)
@@ -136,7 +137,7 @@ namespace NiLiuShui.IRQQ.CSharp
             temp.Templet = "+{0}%";
             temp.Cost = new int[MAX_PROPERTY_LEVEL] { 0, 5, 20, 100, 600, 4000, 20000, 100000 };
             temp.Value = new int[MAX_PROPERTY_LEVEL] { 0, 5, 10, 15, 20, 25, 30, 35 };
-            temp.usePercent = 100;
+            temp.usePercent = 1;
             tables[(int)EnumProperty.HealSelf] = temp;
 
         }
@@ -169,7 +170,71 @@ namespace NiLiuShui.IRQQ.CSharp
             var table = tables[property];
             return table.Cost[grade];
         }
-        
+
+        public static bool IsPropertyNull(int property)
+        {
+            if (tables == null)
+                InitTable();
+            return tables[property] == null;
+        }
         #endregion
+
+        #region NetWork
+        public static bool NetGet(string url, Action<Stream> onLoad, Action<Exception> onError)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "GET";
+                using (WebResponse wr = request.GetResponse())
+                {
+                    var stream = wr.GetResponseStream();
+                    onLoad(stream);
+                    stream.Close();
+                    stream.Dispose();
+                    return true;
+                }
+            }
+            catch (System.Exception e)
+            {
+                IRQQApi.Api_OutPutLog(e.ToString());
+                if (onError != null)
+                    onError(e);
+                return false;
+            }
+        }
+
+
+        public static bool NetPost(string url, string param, Action<Stream> onLoad, Action<Exception> onError, string charset = "")
+        {
+            try
+            {
+                byte[] bs = Encoding.ASCII.GetBytes(param);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded" + charset;
+                request.ContentLength = bs.Length;
+                using (Stream reqStream = request.GetRequestStream())
+                {
+                    reqStream.Write(bs, 0, bs.Length);
+                }
+                using (WebResponse wr = request.GetResponse())
+                {
+                    var stream = wr.GetResponseStream();
+                    onLoad(stream);
+                    stream.Close();
+                    stream.Dispose();
+                    return true;
+                }
+            }
+            catch (System.Exception e)
+            {
+                IRQQApi.Api_OutPutLog(e.ToString());
+                if (onError != null)
+                    onError(e);
+                return false;
+            }
+        }
     }
+        #endregion
 }

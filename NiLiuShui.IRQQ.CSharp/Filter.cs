@@ -12,23 +12,27 @@ namespace NiLiuShui.IRQQ.CSharp
     static class Filter
     {
         private const string HELP_TEXT =
-@"#查询：查询自身持有的财产
-#查询 @目标：查询目标持有的财产
-#统计：统计当前群内最富裕和最穷困的人
-#侦测 @目标：查询目标的属性
-#投资：查看崇高石市场价格
-#买入 数量：购买一定数额的崇高石
-#卖出 数量：卖出持有的崇高石";
+@"%查询：查询自身持有的财产
+%查询 @目标：查询目标持有的财产
+%统计：统计当前群内最富裕和最穷困的人
+%侦测 @目标：查询目标的属性
+%投资：查看崇高石市场价格
+%买入 数量：购买一定数额的崇高石
+%买入：直接购买能购买的最大数量崇高石
+%卖出 数量：卖出持有的崇高石
+%卖出：直接卖出手头所有的崇高石
+%升级：查看可升级的属性
+%升级 属性id：升级对应属性";
 
         public static SendParam MakeParam(string groupQQ, string qq, string content)
         {
-            if (content == "#帮助")
+            if (content == "%帮助")
             {
                 _S.Response(groupQQ, qq, HELP_TEXT);
                 return null;
             }
             //防止刷屏，滤除短长度的内容
-            if (!content.StartsWith("#") && content.Length < 6)
+            if (!content.StartsWith("%") && content.Length < 6)
                 return null;
             SendParam param = new SendParam();
             param.GroupQQ = groupQQ;

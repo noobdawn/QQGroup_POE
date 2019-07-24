@@ -17,13 +17,13 @@ namespace NiLiuShui.IRQQ.CSharp
                 var result = DataRunTime.GetTop(param.GroupQQ);
                 for (int i = 0; i < Math.Min(3, result.Count); i++)
                 {
-                    builder.AppendLine(_S.GetText("Response_to_Query", result[i].QQ, result[i].ChaosCount, result[i].ExCount));
+                    builder.AppendLine(_S.GetText("Response_to_Query", result[i].NickName, result[i].ChaosCount, result[i].ExCount));
                 }
                 builder.AppendLine(_S.GetText("Response_to_Statistics_1"));
                 result = DataRunTime.GetBtm(param.GroupQQ);
                 for (int i = 0; i < Math.Min(3, result.Count); i++)
                 {
-                    builder.AppendLine(_S.GetText("Response_to_Query", result[i].QQ, result[i].ChaosCount, result[i].ExCount));
+                    builder.AppendLine(_S.GetText("Response_to_Query", result[i].NickName, result[i].ChaosCount, result[i].ExCount));
                 }
                 _S.Response(param.GroupQQ, param.QQ, builder.ToString());
             }

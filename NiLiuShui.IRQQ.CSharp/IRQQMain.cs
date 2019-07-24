@@ -67,7 +67,8 @@ namespace NiLiuShui.IRQQ.CSharp
             modules = new IModule[]
             {
                 new Statistics(),
-                new Arena(),
+                //new Arena(),
+                new SomeAPI(),
                 new Stock(),
                 new Bank(),
             };
