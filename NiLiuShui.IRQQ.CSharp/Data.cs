@@ -66,10 +66,18 @@ namespace NiLiuShui.IRQQ.CSharp
         #region 增删查改
         private static void Sort()
         {
-            ranked.Sort((x, y) =>
-            {
-                return x.ChaosCount.CompareTo(y.ChaosCount);
-            });
+            if (Stock.Instance == null)
+                ranked.Sort((x, y) =>
+                {
+                    return x.ChaosCount.CompareTo(y.ChaosCount);
+                });
+            else
+                ranked.Sort((x, y) =>
+                {
+                    var xw = x.ChaosCount + x.ExCount * Stock.Instance.CurExPrice;
+                    var yw = y.ChaosCount + y.ExCount * Stock.Instance.CurExPrice;
+                    return xw.CompareTo(yw);
+                });
         }
 
         public static PersonData AddNewPerson(string group_qq, string qq, bool check = true)
@@ -236,6 +244,7 @@ namespace NiLiuShui.IRQQ.CSharp
                     kv.Value.ChaosCount += 1 * (1 + _S.GetPropertyValue((int)EnumProperty.AfkCount, (int)(kv.Value.Properties[(int)EnumProperty.AfkCount])));
                 }
             }
+            //Sort();
         }
 
         internal static bool ExChange(string group_qq, string qq, double delta, bool check = true)
@@ -253,6 +262,7 @@ namespace NiLiuShui.IRQQ.CSharp
             else
             {
                 person.ExCount += (int)delta;
+                Sort();
                 return true;
             }
         }

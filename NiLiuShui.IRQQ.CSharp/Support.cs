@@ -30,6 +30,10 @@ namespace NiLiuShui.IRQQ.CSharp
         #endregion
 
         #region 返回
+        public static void ResponseJson(string groupqq, string qq, string json)
+        {
+            IRQQApi.Api_SendJSON(Config.RobotQQ, 1, 2, groupqq, qq, json);
+        }
         public static void Response(string groupqq, string qq, string text)
         {
             IRQQApi.Api_SendMsg(Config.RobotQQ, 2, groupqq, qq, text, -1);

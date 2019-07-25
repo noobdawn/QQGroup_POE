@@ -13,18 +13,51 @@ namespace NiLiuShui.IRQQ.CSharp
     /// </summary>
     class Stock : IModule
     {
-
+        public static Stock Instance;
         public Stock()
         {
+            Instance = this;
             time = 0;
             ExStockInit();
+            TaxInit();
             Timeslice.AddSecondEvent(StockStep);
         }
 
-        #region 崇高石市场
-        private int octaves = 2;
-        private double persistence = 0.5;
+        #region 交易税
+        private Dictionary<PersonData, double> taxDic;
+        private void TaxInit()
+        {
+            taxDic = new Dictionary<PersonData, double>();
+        }
 
+        private void TaxStep()
+        {
+            var keys = taxDic.Keys.ToArray();
+            foreach (var key in keys)
+            {
+                var value = taxDic[key];
+                taxDic[key] = value > 0.02 ? value - 0.02 : 0;
+            }
+        }
+
+        private double GetTax(PersonData person)
+        {
+            if (taxDic == null) return 0;
+            if (!taxDic.ContainsKey(person)) return 0;
+            return taxDic[person];
+        }
+
+        private void TaxAdd(PersonData person)
+        {
+            if (taxDic == null) return;
+            if (!taxDic.ContainsKey(person)) { taxDic.Add(person, 0.1);return; }
+            taxDic[person] += 0.1;
+        }
+        #endregion
+
+        #region 崇高石市场
+        private int octaves = 3;
+        private double persistence = 0.6;
         /// <summary>
         /// 分形用的玩意儿
         /// </summary>
@@ -71,11 +104,14 @@ namespace NiLiuShui.IRQQ.CSharp
         
         public const int MiddleExPrice = 100;
         //由股市和散户分别可能造成的波动幅度
-        public const int StockTrendCount = 50;
-        public const int IOTrendCount = 50;
+        public const int StockTrendCount = 30;
+        public const int IOTrendCount = 30;
+        //散户流入流出总量预计
+        public const double IO_Total = 1000.0;
         private int curExPrice;
+        public int CurExPrice { get { return curExPrice; } }
         //上一时间段内总的流入流出量
-        private int lastStepIO;
+        private double lastStepIO;
         private double xxx;
 
         //开盘
@@ -84,15 +120,18 @@ namespace NiLiuShui.IRQQ.CSharp
             curExPrice = MiddleExPrice;
             lastStepIO = 0;
             xxx = DateTime.Now.Millisecond + DateTime.Now.Second;
+            ExStockStep();
         }
 
         //每两分钟发生的变化
         private void ExStockStep()
         {
             StringBuilder sb = new StringBuilder();
-            curExPrice = (int)(MiddleExPrice + StockTrendCount * FractalRandom(xxx));
+            var io = (50 * lastStepIO / IO_Total);
+            io = io > IOTrendCount ? IOTrendCount : io < -IOTrendCount ? -IOTrendCount : io;
+            curExPrice = (int)(MiddleExPrice + StockTrendCount * FractalRandom(xxx) + io);
             xxx += 0.1;
-            lastStepIO = 0;
+            lastStepIO = Math.Sign(lastStepIO) * Math.Abs(lastStepIO) * 0.8;
         }
 
         /// <summary>
@@ -189,20 +228,22 @@ namespace NiLiuShui.IRQQ.CSharp
         private void StockStep(object sender, ElapsedEventArgs e)
         {
             time++;
-            if (time >= 5)
+            if (time >= 60)
             {
                 ExStockStep();
-                _S.Broadcast(curExPrice.ToString());
-                time -= 5;
+                TaxStep();
+                _S.Broadcast("Response_to_QueryStock", curExPrice);
+                time -= 60;
             }
         }
 
         public bool WhenParamIn(SendParam param)
         {
-            if (!done) return true;
+            //if (!done) return true;
+            var taxrate = GetTax(param.caster);
             if (param.param[0] == _S.GetText("Command_to_QueryStock") && param.param.Length == 1)
             {
-                _S.Response(param.GroupQQ, param.QQ, "Response_to_QueryStock", curExPrice);
+                _S.Response(param.GroupQQ, param.QQ, "Response_to_QueryStockPerson", curExPrice, param.QQ , (int)(taxrate * 100));
                 //_S.Response(param.GroupQQ, param.QQ, intro);
                 return false;
             }
@@ -210,11 +251,14 @@ namespace NiLiuShui.IRQQ.CSharp
             int realCost;
             if (param.param[0] == _S.GetText("Command_to_Buy") && param.param.Length == 1)
             {
-                opCnt = (int)Math.Floor(param.caster.ChaosCount / curExPrice);
-                realCost = opCnt * curExPrice;
+                opCnt = (int)Math.Floor(param.caster.ChaosCount / (curExPrice * (1 + taxrate)));
+                if (opCnt == 0) return false;
+                realCost = (int)Math.Ceiling(opCnt * curExPrice * (1 + taxrate));
                 if (_S.Cost(param.caster, realCost))
                 {
                     DataRunTime.ExChange(param.GroupQQ, param.QQ, opCnt);
+                    ExStockChange(opCnt);
+                    TaxAdd(param.caster);
                     _S.Response(param.GroupQQ, param.QQ, "Response_to_StockOp", param.caster.QQ, param.caster.ChaosCount, param.caster.ExCount);
                 }
                 return false;
@@ -222,10 +266,12 @@ namespace NiLiuShui.IRQQ.CSharp
             if (param.param[0] == _S.GetText("Command_to_Buy") && param.param.Length == 2 && int.TryParse(param.param[1], out opCnt))
             {
                 if (opCnt <= 0) return false;
-                realCost = opCnt * curExPrice;
+                realCost = (int)Math.Ceiling(opCnt * curExPrice * (1 + taxrate));
                 if (_S.Cost(param.caster, realCost))
                 {
                     DataRunTime.ExChange(param.GroupQQ, param.QQ, opCnt);
+                    ExStockChange(opCnt);
+                    TaxAdd(param.caster);
                     _S.Response(param.GroupQQ, param.QQ, "Response_to_StockOp", param.caster.QQ, param.caster.ChaosCount, param.caster.ExCount);
                 }
                 return false;
@@ -233,10 +279,13 @@ namespace NiLiuShui.IRQQ.CSharp
             if (param.param[0] == _S.GetText("Command_to_Sell") && param.param.Length == 1)
             {
                 opCnt = param.caster.ExCount;
+                if (opCnt == 0) return false;
                 opCnt = -opCnt;
-                realCost = Math.Abs(opCnt * curExPrice);
+                realCost = Math.Abs((int)Math.Floor(opCnt * curExPrice * (1 - taxrate)));
                 DataRunTime.ExChange(param.GroupQQ, param.QQ, opCnt);
                 DataRunTime.ChaosChange(param.GroupQQ, param.QQ, realCost);
+                ExStockChange(opCnt);
+                TaxAdd(param.caster);
                 _S.Response(param.GroupQQ, param.QQ, "Response_to_StockOp", param.caster.QQ, param.caster.ChaosCount, param.caster.ExCount);
                 return false;
             }
@@ -245,9 +294,11 @@ namespace NiLiuShui.IRQQ.CSharp
                 if (opCnt <= 0) return false;
                 if (opCnt > param.caster.ExCount) return false;
                 opCnt = -opCnt;
-                realCost = Math.Abs(opCnt * curExPrice);
+                realCost = Math.Abs((int)Math.Floor(opCnt * curExPrice * (1 - taxrate)));
                 DataRunTime.ExChange(param.GroupQQ, param.QQ, opCnt);
                 DataRunTime.ChaosChange(param.GroupQQ, param.QQ, realCost);
+                ExStockChange(opCnt);
+                TaxAdd(param.caster);
                 _S.Response(param.GroupQQ, param.QQ, "Response_to_StockOp", param.caster.QQ, param.caster.ChaosCount, param.caster.ExCount);
                 return false;
             }

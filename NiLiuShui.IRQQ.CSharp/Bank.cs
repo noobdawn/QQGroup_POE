@@ -63,12 +63,13 @@ namespace NiLiuShui.IRQQ.CSharp
             {
                 _S.Response(param.GroupQQ, param.QQ, "Response_to_Query", param.target.NickName, param.target.ChaosCount, param.target.ExCount);
             }
-            if (param.param[0] == _S.GetText("Command_to_GMAdd") && param.QQ == Config.God)
-            {
-                int count = int.Parse(param.param[1]);
-                DataRunTime.GMChaos(param.GroupQQ, count);
-                _S.Response(param.GroupQQ, param.QQ, "Response_to_GMAdd", count);
-            }
+            //GM
+            //if (param.param[0] == _S.GetText("Command_to_GMAdd") && param.QQ == Config.God)
+            //{
+            //    int count = int.Parse(param.param[1]);
+            //    DataRunTime.GMChaos(param.GroupQQ, count);
+            //    _S.Response(param.GroupQQ, param.QQ, "Response_to_GMAdd", count);
+            //}
             return true;
         }
     }
